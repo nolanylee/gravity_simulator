@@ -15,7 +15,7 @@ class Simulation:
 		self.width = None
 		self.height = None
 		#default is in solar values (mass and radius of Sun in cgs)
-		self.mass, self.velocity, self.force, self.radius, self.position = 10 ** 16, 0, 0, 10, (0, 0)
+		self.mass, self.velocity, self.force, self.radius, self.position = 6 * 10 ** 15, np.array([0, 0]), np.array([0, 0]), 10, np.array([0, 0])
 
 	#Start simulation, initialize window and run boolean.
 	def start_env(self):
@@ -49,6 +49,10 @@ class Simulation:
 						else:
 							self.draw = True
 
+				#CLEAR button (logic)
+					elif self.width/8 <= mousepos[0] <= self.width/8+100 and self.height/3 * 2 <= mousepos[1] <= self.height/3 * 2+40:
+						self.objs = np.array([])
+
 				#place objects at mouse cursor
 					else:
 						if self.draw:
@@ -78,11 +82,15 @@ class Simulation:
 			#ON/OFF button for draw (display)
 			if self.draw == True:
 				pygame.draw.rect(self.space, (30, 180, 30),[self.width/8, self.height/3, 100, 40])
-				self.space.blit(pygame.font.SysFont('Times New Roman', 30).render('DRAW', True, (255, 255, 255)), (self.width/8 + 5, self.height/3))
+				self.space.blit(pygame.font.SysFont('Times New Roman', 30).render('DRAW', True, (255, 255, 255)), (self.width/8 + 5, self.height/3 + 2))
 
 			else:
 				pygame.draw.rect(self.space, (180, 30, 30),[self.width/8, self.height/3, 100, 40])
-				self.space.blit(pygame.font.SysFont('Times New Roman', 30).render('DRAW', True, (255, 255, 255)), (self.width/8 + 5, self.height/3))
+				self.space.blit(pygame.font.SysFont('Times New Roman', 30).render('DRAW', True, (255, 255, 255)), (self.width/8 + 5, self.height/3 + 2))
+
+			#button for clearing objects
+			pygame.draw.rect(self.space, (70, 70, 255),[self.width/8, self.height/3 * 2, 100, 40])
+			self.space.blit(pygame.font.SysFont('Times New Roman', 25).render('CLEAR', True, (255, 255, 255)), (self.width/8 + 10, self.height/3 * 2 + 5))
 
 			for obj in self.objs:
 				obj.draw(self.space)
