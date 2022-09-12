@@ -15,7 +15,7 @@ class Simulation:
 		self.width = None
 		self.height = None
 		#default is in solar values (mass and radius of Sun in cgs)
-		self.mass, self.velocity, self.force, self.radius, self.position = 6 * 10 ** 15, np.array([0, 0]), np.array([0, 0]), 10, np.array([0, 0])
+		self.mass, self.velocity, self.force, self.radius, self.position = 1 * 10 ** 11, np.array([0, 0]), np.array([0, 0]), 10, np.array([0, 0])
 
 	#Start simulation, initialize window and run boolean.
 	def start_env(self):
