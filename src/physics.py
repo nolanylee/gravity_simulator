@@ -35,7 +35,7 @@ def dist_all(obj_array):
 			if obj[0] == obj2[0]:
 				dist_array[obj[1], obj2[1]] = np.array([0.0, 0.0])
 			else:
-				dist_array[obj2[1], obj[1]] = np.subtract(obj[0].position, obj2[0].position) * np.array([1, -1])
+				dist_array[obj[1], obj2[1]] = np.subtract(obj[0].position, obj2[0].position) * np.array([-1, -1])
 	return dist_array
 
 # Compute force vectors of all objects given array of all objects

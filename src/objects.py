@@ -8,8 +8,8 @@ import numpy as np
 # by: Nolan Lee							#
 #########################################
 
-# Simulator is updated every 0.05 seconds, used as t in calculations
-TIMESTEP = 0.05
+# Simulator is updated every 0.0005 seconds, used as t in calculations
+TIMESTEP = 0.0005
 
 # Class representation of objects to be placed and interact in the gravity simulator
 # Mass, velocity, radius, and position are all parameters that can be altered
